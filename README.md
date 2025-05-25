@@ -17,9 +17,11 @@ use restaurant_db;
 select * from menu_items;
 
 -- 2. Find the number of items on the menu 
+
 select count(*) from menu_items;
 
 -- 3. What are the least and most expensive items on the menu 
+
 select * from menu_items
 order by price;
 
@@ -27,10 +29,12 @@ select * from menu_items
 order by price desc;
 
 -- 4. How many Italian dishes are on the menu 
+
 select count(*) from menu_items
 where category="Italian";
 
 -- 5. what are the least and most expensive Italian dishes on the menu 
+
 Select * from menu_items
 where category="Italian"
 order by price;
@@ -40,11 +44,13 @@ where category="Italian"
 order by price desc;
 
 -- 6. How many dishes are in each category
+
 select category, count(menu_item_id) as num_dishes 
 from menu_items 
 group by category;
 
 -- 7. what is the average dish price within each category 
+
 select category, avg(price) as avg_price
 from menu_items
 group by category;
@@ -55,25 +61,31 @@ group by category;
 use restaurant_db;
 
 -- 1. Vieew the order details table
+
 select * from order_details;
 
 -- 2. what is the date rnge of the table 
+
 select min(order_date), max(order_date)
 from order_details;
 
 -- 3. How many orders were made within this date rang 
+
 select count(distinct order_id) from order_details;
 
 -- 4. How many items were ordered within this date range 
+
 select count(*) from order_details;
 
 -- 5.which orders had the most number of items 
+
 select order_id,count(order_id) as num_items
  from order_details
 group by order_id
 order by num_items desc;
 
 -- 6. How many orders had more than 1 items 
+
 Select count(*) from
 
 (select order_id,count(order_id) as num_items
@@ -88,6 +100,7 @@ having num_items >12) as num_orders;
  use restaurant_db;
 
 -- 1. Combine the menu_items and order_details tables into a single table 
+
 select * from menu_items;
 select * from order_details;
 
@@ -96,6 +109,7 @@ order_details od left join menu_items mi
    on od.item_id= mi.menu_item_id;
    
 -- 2. what were the least and most ordered items? what categories were they in?
+
 select item_name,category ,  count(order_details_id) as num_purchses 
 from
 order_details od left join menu_items mi
@@ -104,6 +118,7 @@ order_details od left join menu_items mi
    order by num_purchses desc;
    
 -- 3. what are the top 5 orders that spent the most money
+
 select order_id, sum(price) as total_spend from
 order_details od left join menu_items mi
    on od.item_id= mi.menu_item_id
@@ -112,6 +127,7 @@ order_details od left join menu_items mi
    limit 5;
    
 -- 4. view the details of the highest spend order. what insights can you gather from the result
+
 select category , count(item_id) as num_items
  from
 order_details od left join menu_items mi
@@ -123,6 +139,7 @@ group by category;
 
 
 -- 5. View details of the top 5  highest spend orders . what insights can you gather from the result 
+
 select order_id, category , count(item_id) as num_items
  from
 order_details od left join menu_items mi
