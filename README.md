@@ -149,7 +149,7 @@ order_details od left join menu_items mi
 where order_id=440
 group by category;
 
--- Hmburger are populer so we should keep that on the menu 
+-- Hamburgers are popular, so we should keep them on the menu.
 
 
 -- 5. View details of the top 5  highest spend orders . what insights can you gather from the result 
@@ -161,5 +161,5 @@ order_details od left join menu_items mi
 where order_id in (440, 2075, 1957, 330 , 2675)
 group by order_id, category;
 
--- insights - whe should keep this expensive Italian dishes on the menu  because they seem to be ordering that lot  
+-- insights - We should keep these expensive Italian dishes on the menu because they seem very popular. 
 
