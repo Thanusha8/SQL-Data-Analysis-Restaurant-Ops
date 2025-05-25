@@ -13,6 +13,7 @@ Evaluate customer reactions to the new menu by analyzing order patterns, identif
 use restaurant_db;
 
 -- 1. View the menu_items table.
+
 select * from menu_items;
 
 -- 2. Find the number of items on the menu 
