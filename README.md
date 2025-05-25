@@ -16,9 +16,13 @@ use restaurant_db;
 
 select * from menu_items;
 
+
+
 -- 2. Find the number of items on the menu 
 
 select count(*) from menu_items;
+
+
 
 -- 3. What are the least and most expensive items on the menu 
 
@@ -28,10 +32,14 @@ order by price;
 select * from menu_items
 order by price desc;
 
+
+
 -- 4. How many Italian dishes are on the menu 
 
 select count(*) from menu_items
 where category="Italian";
+
+
 
 -- 5. what are the least and most expensive Italian dishes on the menu 
 
@@ -43,17 +51,23 @@ Select * from menu_items
 where category="Italian"
 order by price desc;
 
+
+
 -- 6. How many dishes are in each category
 
 select category, count(menu_item_id) as num_dishes 
 from menu_items 
 group by category;
 
+
+
 -- 7. what is the average dish price within each category 
 
 select category, avg(price) as avg_price
 from menu_items
 group by category;
+
+
 
 
 ## Script 02  - Examine order frequency, item quantities, and large orders to gauge customer purchasing patterns.
